@@ -13,7 +13,7 @@ services:
   front:
     build: ./front
     volumes:
-      - ./front:/app
+      - ./front/app:/app
     ports:
       - 3000:3000
     depends_on:
@@ -23,7 +23,7 @@ services:
   back:
     build: ./back
     volumes:
-      - ./back:/app
+      - ./back/app:/app
     ports:
       - 8000:8000
     depends_on:
