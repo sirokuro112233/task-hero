@@ -1,0 +1,34 @@
+services:
+  db:
+    image: mysql:8.0
+    volumes:
+      - db_data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    restart: always
+
+  front:
+    build: ./front
+    volumes:
+      - ./front:/app
+    ports:
+      - 3000:3000
+    depends_on:
+      - back
+    restart: always
+  
+  back:
+    build: ./back
+    volumes:
+      - ./back:/app
+    ports:
+      - 8000:8000
+    depends_on:
+      - db
+    restart: always
+
+volumes:
+  db_data:
