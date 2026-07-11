@@ -4,11 +4,13 @@ services:
     platform: linux/x86_64
     volumes:
       - db_data:/var/lib/mysql
+      - ./db/init:/docker-entrypoint-initdb.d    # db初期化
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_USER: ${MYSQL_USER}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      TZ: ${TZ}
     restart: always
 
   front:
