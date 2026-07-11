@@ -34,7 +34,7 @@ DockerとDocker Composeがインストールされている環境であれば、
 
 ### 1. リポジトリのクローン
 ```bash
-git clone [https://github.com/your-username/8bit-task-quest.git](https://github.com/your-username/8bit-task-quest.git)
+git clone https://github.com/sirokuro112233/task-hero
 cd 8bit-task-quest
 ```
 
