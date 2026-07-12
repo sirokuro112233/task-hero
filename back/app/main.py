@@ -23,9 +23,10 @@ class Quest(SQLModel, table=True):
     exp_reward: int
     is_completed: bool = Field(default=False)
     target_date: date
+    completed_at: date | None = None
+
 
 app = FastAPI()
-
 
 # 死活監視用
 @app.get("/")
@@ -111,6 +112,7 @@ def update_quest_status(
 
     # 達成済みに書き換え
     quest.is_completed = True
+    quest.completed_at = date.today()
 
     # 勇者に経験値を付与
     hero = session.get(User, quest.user_id)
