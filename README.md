@@ -143,6 +143,22 @@ docker compose up -d --build
 
 初回アクセスでは「新規登録」を選択し、プレイヤー名と6文字以上のパスワードを入力してください。
 
+### コンテナの状態を確認
+
+```bash
+docker compose ps
+docker compose logs -f front back db
+```
+
+### コンテナを停止
+
+```bash
+docker compose down
+```
+
+DBの内容はDockerボリューム `db_data` に保存されるため、通常の `docker compose down` では削除されません。
+
+
 ## Swagger UIをGitHub Pagesへ公開
 
 `main`ブランチの`back/`以下を更新すると、GitHub ActionsがFastAPIから
@@ -165,21 +181,6 @@ python back/scripts/export_swagger.py
 ```
 
 生成物は`back/site/`へ出力されます。Swagger UI本体のJavaScriptとCSSはCDNから読み込みます。
-
-### コンテナの状態を確認
-
-```bash
-docker compose ps
-docker compose logs -f front back db
-```
-
-### コンテナを停止
-
-```bash
-docker compose down
-```
-
-DBの内容はDockerボリューム `db_data` に保存されるため、通常の `docker compose down` では削除されません。
 
 ## 基本的な使い方
 
