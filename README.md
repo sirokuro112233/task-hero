@@ -224,47 +224,9 @@ INSERT INTO rewards (
 
 ## API概要
 
-### 認証・プレイヤー
+APIの仕様とエンドポイント一覧は、GitHub Pagesで公開しているSwagger UIを参照してください。
 
-| Method | Endpoint | 内容 |
-| --- | --- | --- |
-| `POST` | `/auth/register` | 新規登録、または旧プレイヤーの引き継ぎ |
-| `POST` | `/auth/login` | ログイン |
-| `GET` | `/users/{user_id}` | プレイヤーステータス取得・ストリーク更新 |
-| `PATCH` | `/users/{user_id}` | 名前・プロフィール画像変更 |
-
-### クエスト
-
-| Method | Endpoint | 内容 |
-| --- | --- | --- |
-| `GET` | `/quests` | クエスト一覧取得。日付・期間・完了状態で絞り込み可能 |
-| `POST` | `/quests` | クエスト作成・前日受注バフ判定 |
-| `PATCH` | `/quests/{quest_id}/complete` | クエスト達成・EXP付与 |
-| `DELETE` | `/quests/{quest_id}` | クエスト削除 |
-
-`GET /quests` では次のクエリパラメータを利用できます。
-
-- `user_id`
-- `target_date`
-- `date_from`
-- `date_to`
-- `is_completed`
-
-### ガチャ
-
-| Method | Endpoint | 内容 |
-| --- | --- | --- |
-| `POST` | `/gacha/draw/{user_id}` | チケットを1枚消費してガチャを引く |
-| `GET` | `/gacha/inventory/{user_id}` | 獲得報酬一覧を取得 |
-| `PATCH` | `/gacha/inventory/{user_id}/{user_reward_id}/use` | 報酬を使用済みにする |
-
-### タイマー
-
-| Protocol | Endpoint | 内容 |
-| --- | --- | --- |
-| WebSocket | `/ws/timer/{user_id}` | ポモドーロタイマーの状態同期 |
-
-WebSocketでは `start`、`pause`、`reset`、`switch`、`sync` アクションをJSONで送信します。
+[Task Hero API - Swagger UI](https://sirokuro112233.github.io/task-hero/)
 
 ## データベース
 
