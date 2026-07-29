@@ -143,6 +143,29 @@ docker compose up -d --build
 
 初回アクセスでは「新規登録」を選択し、プレイヤー名と6文字以上のパスワードを入力してください。
 
+## Swagger UIをGitHub Pagesへ公開
+
+`main`ブランチの`back/`以下を更新すると、GitHub ActionsがFastAPIから
+OpenAPIスキーマと静的Swagger UIを生成し、GitHub Pagesへ公開します。
+
+初回のみ、GitHubリポジトリの **Settings > Pages > Build and deployment > Source** を
+**GitHub Actions** に設定してください。公開先は次のURLです。
+
+```text
+https://sirokuro112233.github.io/task-hero/
+```
+
+Actions画面の **Publish Swagger UI > Run workflow** から手動での公開もできます。
+
+ローカルで書き出す場合は、バックエンド依存パッケージをインストールしてから実行します。
+
+```bash
+python -m pip install -r back/requirements.txt
+python back/scripts/export_swagger.py
+```
+
+生成物は`back/site/`へ出力されます。Swagger UI本体のJavaScriptとCSSはCDNから読み込みます。
+
 ### コンテナの状態を確認
 
 ```bash
