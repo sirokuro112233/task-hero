@@ -178,9 +178,9 @@ export default function Home() {
     let retry: number | undefined;
     let disposed = false;
     const connect = () => {
-      const configuredUrl = process.env.NEXT_PUBLIC_WS_URL;
       const protocol = window.location.protocol === "https:" ? "wss" : "ws";
-      const baseUrl = configuredUrl ?? `${protocol}://${window.location.hostname}:8000`;
+      const configuredUrl = process.env.NEXT_PUBLIC_WS_URL?.replace(/\/$/, "");
+      const baseUrl = configuredUrl || `${protocol}://${window.location.host}`;
       const socket = new WebSocket(`${baseUrl}/ws/timer/${userId}`);
       socketRef.current = socket;
       socket.onopen = () => setTimerConnected(true);

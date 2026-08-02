@@ -130,6 +130,12 @@ MYSQL_PASSWORD=change_this_password
 TZ=Asia/Tokyo
 ```
 
+フロントエンドとバックエンドを別ドメインで公開する場合のみ、ブラウザから接続できるWebSocketのURLも指定します。同一ドメインで公開する場合は、`/ws` がバックエンドへ自動転送されるため設定不要です。
+
+```dotenv
+NEXT_PUBLIC_WS_URL=wss://api.example.com
+```
+
 ### 3. コンテナを起動
 
 ```bash
